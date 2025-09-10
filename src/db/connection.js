@@ -1,14 +1,28 @@
 import mongoose from "mongoose";
 
+let cached = global.mongoose;
+if (!cached) cached = global.mongoose = { conn: null, promise: null };
 
 const connectDB = async () => {
-    try {
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}`)
-        console.log(`\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`);
-    } catch (error) {
-        console.log("MONGODB connection FAILED ", error);
-        process.exit(1)
-    }
-}
+  if (cached.conn) return cached.conn; // reuse existing connection
 
-export default connectDB
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then((mongooseInstance) => mongooseInstance);
+  }
+
+  try {
+    cached.conn = await cached.promise;
+    console.log(`MongoDB connected !! DB HOST: ${cached.conn.connection.host}`);
+    return cached.conn;
+  } catch (error) {
+    console.error("MONGODB connection FAILED", error);
+    throw error; // don’t exit; let serverless handle retries
+  }
+};
+
+export default connectDB;
