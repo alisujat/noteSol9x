@@ -1,7 +1,7 @@
 // server.js (Vercel-compatible)
 import dotenv from "dotenv";
 import connectDB from "./src/db/connection.js";
-import { app } from "./app.js";
+import app from "./app.js";
 import { createServer } from "http";
 
 dotenv.config({
