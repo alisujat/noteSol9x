@@ -1,6 +1,7 @@
 {
   "name": "note-sol9x",
   "version": "1.0.0",
+  "type": "module",
   "description": "assignment of sol9x",
   "main": "index.js",
   "scripts": {
@@ -19,6 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.6.1",
     "express": "^4.18.2",
+    "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.0",
     "mongoose-aggregate-paginate-v2": "^1.0.6"
