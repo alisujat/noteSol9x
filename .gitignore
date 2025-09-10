@@ -1,37 +1,3 @@
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
+node_modules
 .env
-
-# Logs
-logs/
-*.log
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Flutter/Dart
-.flutter-plugins
-.flutter-plugins-dependencies
-.dart_tool/
 build/
-.idea/
-.packages
-.pub-cache/
-pubspec.lock
-
-# VS Code
-.vscode/
-
-# Others
-*.iml
-*.swp
-*.swo
