@@ -8,25 +8,20 @@ dotenv.config({
   path: "./.env"
 });
 
-// Connect to MongoDB once when serverless function cold starts
 let isDBConnected = false;
-const connectToDB = async () => {
-  if (!isDBConnected) {
-    try {
-      await connectDB();
-      isDBConnected = true;
-      console.log("MongoDB connected!");
-    } catch (err) {
-      console.error("MongoDB connection failed:", err);
-      throw err;
-    }
-  }
-};
 
-// Export Vercel serverless function
+// Function to connect to MongoDB
+async function connectToDB() {
+  if (!isDBConnected) {
+    await connectDB();
+    isDBConnected = true;
+  }
+}
+
+// Default export required by Vercel
 export default async function handler(req, res) {
   try {
-    await connectToDB(); // ensure DB is connected
+    await connectToDB(); // Ensure DB is connected
     const server = createServer(app);
     server.emit("request", req, res);
   } catch (err) {
