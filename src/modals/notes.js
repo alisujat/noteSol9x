@@ -19,7 +19,10 @@ const noteSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
-});
+},  {
+  autoIndex: false 
+}
+);
 
 const Note = mongoose.model("Note", noteSchema);
 
