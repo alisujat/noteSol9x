@@ -1,6 +1,6 @@
 import { asyncHandler } from "../utils/asynchronousHandler.js";
 import {ApiError} from "../utils/error.js"
-import { User} from "../modals/user.js"
+import { User} from "../modals/auth.js"
 import { ApiResponse } from "../utils/response.js";
 
 

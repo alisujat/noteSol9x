@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser());
 
 // Routes import
-import userRouter from './src/routes/user.js';
+import userRouter from './src/routes/auth.js';
 import noteRouter from "./src/routes/note.js";
 
 // Routes declaration
