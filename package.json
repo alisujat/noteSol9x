@@ -5,7 +5,7 @@
   "description": "assignment of sol9x",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -r dotenv/config --experimental-json-modules server/src/index.js",
+    "dev": "nodemon -r dotenv/config --experimental-json-modules index.js",
     "start": "node index.js"
   },
   "keywords": [],
